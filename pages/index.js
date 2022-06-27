@@ -16,10 +16,10 @@ export default function Home({ homepage, chapters }) {
 
   return (
     <>
-      <Seo seo={homepage.seo} />
+      {/* <Seo seo={homepage.seo} />
 
       <Header desc={headerDesc()} color="#101524" />
-      {homepage.highlight.length > 0 && <Highlight data={homepage.highlight} />}
+      {homepage.highlight.length > 0 && <Highlight data={homepage.highlight} />} */}
 
       <section className="home__mobile-search">
         <Link href="/search">
@@ -33,22 +33,22 @@ export default function Home({ homepage, chapters }) {
         <ul className="home__cards">
           {chapters.map((chapter, index) => {
             const chapterDetails = {
-              title: chapter.Title,
+              title: chapter.title,
               slug: chapter.slug,
               icon: chapter.icon,
               Desc: chapter.Desc,
-              totalArticles: chapter.sections.length,
+              totalArticles: chapter.sections?.length,
               index,
             };
             return (
-              <React.Fragment key={index}>
+              <React.Fragment key={chapter.id}>
                 <Card chapter={chapterDetails} />
               </React.Fragment>
             );
           })}
         </ul>
       </main>
-      <Carousel youtube={homepage.youtube} />
+      {/* <Carousel youtube={homepage.youtube} /> */}
     </>
   );
 }
@@ -58,7 +58,7 @@ export async function getStaticProps() {
   const chapters = await fetchAPI('/chapters');
 
   return {
-    props: { homepage, chapters },
+    props: { homepage, chapters: chapters.data },
     revalidate: 1,
   };
 }

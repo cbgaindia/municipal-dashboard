@@ -342,7 +342,7 @@ button {
   position: relative;
   display: flex;
   align-items: flex-end;
-  background: linear-gradient(218.46deg, #00138f 9.79%, #604294 74.73%);
+  background: linear-gradient(218.46deg, hsl(232deg, 100%, 28%) 9.79%, hsl(262deg, 38%, 42%) 74.73%);
 }
 .card__content {
   height: 100%;
@@ -828,6 +828,7 @@ button {
   display: flex;
   justify-content: space-between;
   z-index: 1;
+  position: -webkit-sticky;
   position: sticky;
   top: 0;
 }
@@ -875,7 +876,7 @@ button {
   overflow-y: auto;
 }
 .menu .content::-webkit-scrollbar-track {
-  background: #f6f5fa;
+  background: rgb(246, 245, 250);
 }
 .menu .content__link {
   align-items: center;
@@ -969,6 +970,7 @@ button {
   padding: 0;
   background: rgba(66, 47, 161, 0.05);
   border-radius: 10px;
+  position: -webkit-sticky;
   position: sticky;
   top: 1rem;
   max-height: 75vh;
@@ -1095,7 +1097,7 @@ button {
 }
 .chapter .section figure.table {
   overflow-x: auto;
-  scrollbar-color: #646262 white;
+  scrollbar-color: rgb(100, 98, 98) white;
 }
 .chapter .section figure.table::-webkit-scrollbar-track {
   background: white;
@@ -1105,19 +1107,19 @@ button {
   border-collapse: collapse;
 }
 .chapter .section figure.table table th {
-  background-color: #e8eefd;
-  border: 0.2px solid rgba(143, 177, 250, 0.5);
+  background-color: hsl(222deg, 83%, 95%);
+  border: 0.2px solid hsla(221deg, 91%, 77%, 0.5);
   font-weight: 500;
 }
 .chapter .section figure.table table td {
   min-width: 100px;
   padding: 0.5rem 0;
-  border: 0.2px solid rgba(143, 177, 250, 0.5) !important;
+  border: 0.2px solid hsla(221deg, 91%, 77%, 0.5) !important;
   padding: 1rem !important;
   word-wrap: break-word;
 }
 .chapter .section figure.table table tr.solitude {
-  background-color: rgba(232, 238, 253, 0.5);
+  background-color: hsla(223deg, 84%, 95%, 0.5);
 }
 .chapter .section figure.table table tr.sol_border {
   border-bottom: 1px solid #91b3fa !important;
@@ -1310,4 +1312,4 @@ button {
   place-content: center;
   height: 90vh;
   text-align: center;
-}/*# sourceMappingURL=app.css.map */
+}
