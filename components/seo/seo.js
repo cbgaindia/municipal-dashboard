@@ -5,24 +5,17 @@ import { getStrapiMedia } from 'lib/media';
 import { useRouter } from 'next/router';
 
 const Seo = ({ seo }) => {
-  const router = useRouter();
-  const { defaultSeo, siteName, title } = useContext(GlobalContext);
-
-  const seoWithDefaults = {
-    ...defaultSeo,
-    ...seo,
-  };
   const fullSeo = {
-    ...seoWithDefaults,
-    metaTitle: `${seoWithDefaults.metaTitle} - ${title} | ${siteName}`,
-    shareImage: seoWithDefaults.icon
-      ? getStrapiMedia(seoWithDefaults.icon)
-      : getStrapiMedia(seoWithDefaults.shareImage),
+    metaTitle: `${seo.metaTitle}`,
+    metaDescription: `${seo.metaDescription}`,
+    shareImage: seo.icon
+      ? getStrapiMedia(seo.icon)
+      : getStrapiMedia(seo.shareImage),
   };
 
-  if (router.route == '/') {
-    fullSeo.metaTitle = `${title} | ${siteName}`;
-  }
+  // if (router.route == '/') {
+  //   fullSeo.metaTitle = `${title} | ${siteName}`;
+  // }
 
   return (
     <Head>
@@ -47,7 +40,7 @@ const Seo = ({ seo }) => {
           <meta name="image" content={fullSeo.shareImage} />
         </>
       )}
-      {fullSeo.article && <meta property="og:type" content="article" />}
+      {seo.article && <meta property="og:type" content="article" />}
       <meta name="twitter:card" content="summary_large_image" />
     </Head>
   );

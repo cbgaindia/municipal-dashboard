@@ -146,10 +146,9 @@ button {
 }
 
 .header {
-  background-color: #29314f;
+  background-color: #212142;
   display: grid;
   justify-content: center;
-  min-height: 184px;
   color: #fff;
 }
 .header__container {
@@ -163,7 +162,7 @@ button {
 .header .branding {
   display: flex;
   align-items: center;
-  margin-top: 1rem;
+  padding: 16px 0;
   height: -webkit-max-content;
   height: -moz-max-content;
   height: max-content;
@@ -188,19 +187,6 @@ button {
   -o-object-fit: contain;
      object-fit: contain;
 }
-.header__desc {
-  display: grid;
-  grid-area: 2/1/2/3;
-  margin-top: 1rem;
-  padding: 1rem 0;
-  align-items: center;
-  font-weight: normal;
-  font-size: 16px;
-  line-height: 150%;
-  color: rgba(255, 255, 255, 0.9);
-  max-width: 700px;
-  width: 90vw;
-}
 .header h2 {
   font-size: 1.5rem;
   font-weight: 400;
@@ -211,21 +197,22 @@ button {
   width: 130px;
   height: 38px;
   box-sizing: border-box;
-  background: #4b4797;
+  background-color: #484872;
   border-radius: 4px;
   border: 2px solid transparent;
   font-weight: 400;
   font-size: 16px;
   color: #ffffff;
-  padding-left: 1rem;
+  padding-left: 64px;
+  width: min(300px, 100%);
   display: flex;
   align-items: center;
   justify-self: flex-end;
-  margin-top: 1rem;
+  margin: 16px 0;
   transition: background-color 700ms cubic-bezier(0.19, 1, 0.22, 1), border 700ms cubic-bezier(0.19, 1, 0.22, 1);
   background-image: url(public/assets/icons/search.svg);
   background-repeat: no-repeat;
-  background-position: right 10px center;
+  background-position: left 20px center;
 }
 .header__search:hover, .header__search:focus {
   background-color: #273051;
@@ -692,21 +679,22 @@ button {
   width: 130px;
   height: 38px;
   box-sizing: border-box;
-  background: #4b4797;
+  background-color: #484872;
   border-radius: 4px;
   border: 2px solid transparent;
   font-weight: 400;
   font-size: 16px;
   color: #ffffff;
-  padding-left: 1rem;
+  padding-left: 64px;
+  width: min(300px, 100%);
   display: flex;
   align-items: center;
   justify-self: flex-end;
-  margin-top: 1rem;
+  margin: 16px 0;
   transition: background-color 700ms cubic-bezier(0.19, 1, 0.22, 1), border 700ms cubic-bezier(0.19, 1, 0.22, 1);
   background-image: url(public/assets/icons/search.svg);
   background-repeat: no-repeat;
-  background-position: right 10px center;
+  background-position: left 20px center;
   width: 100%;
   max-height: 55px;
   height: 55px;
@@ -731,6 +719,14 @@ button {
   .home__mobile-search {
     display: none;
   }
+}
+.home__desc {
+  padding: 40px 20px;
+}
+.home__desc h2 {
+  text-align: center;
+  line-height: 1.8;
+  font-size: 1.2rem;
 }
 .home__cards {
   margin: 2rem auto;

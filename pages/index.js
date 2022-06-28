@@ -5,21 +5,17 @@ import Seo from 'components/seo/seo';
 import Card from 'components/card/card';
 import { sortList } from 'utils/helpers';
 import Header from 'components/header/header';
-import Highlight from 'components/highlights/highlights';
 import Carousel from 'components/carousel/carousel';
 
-export default function Home({ homepage, chapters }) {
-  sortList(chapters);
-  function headerDesc() {
-    return <p className="header__desc">{homepage.heading}</p>;
-  }
-
+export default function Home({ global }) {
+  const chapterList = React.useMemo(
+    () => sortList(global.chapters),
+    [global.chapters]
+  );
   return (
     <>
-      {/* <Seo seo={homepage.seo} />
-
-      <Header desc={headerDesc()} color="#101524" />
-      {homepage.highlight.length > 0 && <Highlight data={homepage.highlight} />} */}
+      <Seo seo={global.seo} />
+      <Header title={global.name} color="#212142" />
 
       <section className="home__mobile-search">
         <Link href="/search">
@@ -30,8 +26,11 @@ export default function Home({ homepage, chapters }) {
         <span id="maincontent">-</span>
       </div>
       <main id="main" tabIndex="-1" className="wrapper">
+        <div className="home__desc">
+          <h2>{global.desc}</h2>
+        </div>
         <ul className="home__cards">
-          {chapters.map((chapter, index) => {
+          {chapterList?.map((chapter, index) => {
             const chapterDetails = {
               title: chapter.title,
               slug: chapter.slug,
@@ -48,17 +47,22 @@ export default function Home({ homepage, chapters }) {
           })}
         </ul>
       </main>
-      {/* <Carousel youtube={homepage.youtube} /> */}
+      <Carousel youtube={global.youtube} />
     </>
   );
 }
 
 export async function getStaticProps() {
+  const global = await fetchAPI('/books?filters[slug]=municipal');
   const homepage = await fetchAPI('/homepage');
   const chapters = await fetchAPI('/chapters');
 
   return {
-    props: { homepage, chapters: chapters.data },
+    props: {
+      homepage: homepage.data,
+      chapters: chapters.data,
+      global: global.data[0],
+    },
     revalidate: 1,
   };
 }
