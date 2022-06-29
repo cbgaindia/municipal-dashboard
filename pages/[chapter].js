@@ -1,14 +1,22 @@
 import React from 'react';
+import Link from 'next/link';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
+import { getStrapiMedia } from 'lib/media';
 import { fetchAPI } from 'lib/api';
-import { sortList, stripTable, tooltipKeyword } from 'utils/helpers';
+import {
+  romanizeNumber,
+  sortList,
+  stripTable,
+  tooltipKeyword,
+} from 'utils/helpers';
 import useWindowDimensions from 'utils/useWindowDimensions';
 import Seo from 'components/seo/seo';
 import Navigation from 'components/navigation/navigation';
 import Menu from 'components/menu/menu';
 import Sidebar from 'components/sidebar/sidebar';
 import useLayoutEffect from 'utils/use-isomorphic-layout-effect';
+import Carousel from 'components/carousel/carousel';
 import { GlobalContext } from './_app';
 
 function goToTopHandler() {
@@ -64,6 +72,7 @@ const Chapter = ({ chapter }) => {
   return (
     <>
       <Seo seo={seo} />
+
       {width < 1025 && chapter.sections.length > 0 && (
         <Menu chapter={chapter} isMobile={width < 1025} />
       )}
@@ -75,25 +84,54 @@ const Chapter = ({ chapter }) => {
           <Sidebar chapter={chapter} />
 
           <section className="chapter__container">
-            {chapter.sections.map((article) => (
-              <article className="section" id={article.slug} key={article.id}>
-                <div className="section__heading">
-                  <span className="section__bar" />
-                  <h2>{article.title}</h2>
-                  <a href={`#${article.slug}`} className="section__anchor">
-                    <span aria-hidden="true">#</span>
-                    <span className="screen-reader-text">
-                      {`Section titled ${article.title}`}
-                    </span>
-                  </a>
-                </div>
-
-                <div
-                  className="section__content"
-                  dangerouslySetInnerHTML={{ __html: article.content }}
+            <div className="chapter__heading-image">
+              <div className="chapter_page_roam">
+                <p>{romanizeNumber(chapter.chapter_no)}</p>
+              </div>
+              <picture className="chapter_heading_img">
+                <source
+                  srcSet={getStrapiMedia(chapter.head_image.url)}
+                  media="(min-width: 100px)"
                 />
-              </article>
-            ))}
+
+                <img
+                  src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs="
+                  alt=""
+                  width="150"
+                  height="120"
+                />
+              </picture>
+            </div>
+            <div className="chapter__content">
+              <h1>{chapter.title}</h1>
+              {chapter.sections.map((article, index) => (
+                <article
+                  className="section chapter-content-container"
+                  id={article.slug}
+                  key={article.id}
+                >
+                  <div className="chapter_body_padding">
+                    <div className="section__heading">
+                      <h2 className="section_number_chap">
+                        {index + 1}. <span className="section__bar" />{' '}
+                        {article.title}
+                      </h2>
+                      <a href={`#${article.slug}`} className="section__anchor">
+                        <span aria-hidden="true">{/* # */}</span>
+                        <span className="screen-reader-text">
+                          {`Section titled ${article.title}`}
+                        </span>
+                      </a>
+                    </div>
+
+                    <div
+                      className="section__content"
+                      dangerouslySetInnerHTML={{ __html: article.content }}
+                    />
+                  </div>
+                </article>
+              ))}
+            </div>
           </section>
         </main>
       ) : (
@@ -103,9 +141,50 @@ const Chapter = ({ chapter }) => {
       )}
 
       <Navigation
-        back={global.chapters[chapter.Chapter_No - 2]}
-        forward={global.chapters[chapter.Chapter_No]}
+        back={global.chapters[chapter.chapter_no - 2]}
+        forward={global.chapters[chapter.chapter_no]}
+        currentchapter={chapter.chapter_no}
       />
+      <section className="seggestion-section-chapter-page">
+        <div className="wrapper">
+          <div className="suggestion_head">
+            <h2>You may also like</h2>
+          </div>
+          <div className="card_suggestion_container">
+            <ul className="card_suggestion_ul">
+              {global.chapters.map((chap, index) => {
+                if (chapter.chapter_no !== chap.chapter_no && index < 9)
+                  return (
+                    <li className="suggestion_card" key={chapter.id}>
+                      <Link key={chap.index} href={`/${chap.slug}`}>
+                        <a>
+                          <div className="suggestion_img_container">
+                            <img
+                              src={`${process.env.NEXT_PUBLIC_STRAPI_API_URL}${chap.icon.url}`}
+                              alt=""
+                            />
+                            <div className="text_suggestion_container">
+                              <div className="suggestion_roam">
+                                <p>{romanizeNumber(chap.chapter_no)}</p>
+                              </div>
+                              <div className="chapter_suggestion_head">
+                                <h4>{chap.title}</h4>
+                              </div>
+                            </div>
+                          </div>
+                        </a>
+                      </Link>
+                    </li>
+                  );
+                return null;
+              })}
+            </ul>
+          </div>
+          <div className="suggesstion_card_container" />
+        </div>
+      </section>
+      <Carousel youtube={global.youtube} />
+
       <a href="#top-of-site-pixel-anchor" type="button" className="back-top">
         <span className="screen-reader-text">Back to Top</span>
         <svg width="32" height="32" viewBox="0 0 100 100">
