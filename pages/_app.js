@@ -85,26 +85,25 @@ function MyApp({ Component, pageProps }) {
           color="#ff8a01"
         />
       </Head>
-
-      <Layout>
-        <NextNprogress
-          color="#4b4697"
-          startPosition={0.3}
-          stopDelayMs={100}
-          height={3}
-          options={{ easing: 'ease', speed: 300, showSpinner: false }}
-        />
-        <GlobalContext.Provider value={global}>
+      <NextNprogress
+        color="#4b4697"
+        startPosition={0.3}
+        stopDelayMs={100}
+        height={3}
+        options={{ easing: 'ease', speed: 300, showSpinner: false }}
+      />
+      <GlobalContext.Provider value={global.data[0]}>
+        <Layout>
           <Component {...pageProps} />
-        </GlobalContext.Provider>
-      </Layout>
+        </Layout>
+      </GlobalContext.Provider>
     </>
   );
 }
 
 MyApp.getInitialProps = async (ctx) => {
   const appProps = await App.getInitialProps(ctx);
-  const global = await fetchAPI('/global');
+  const global = await fetchAPI('/books?filters[slug]=municipal');
   return { ...appProps, pageProps: { global } };
 };
 

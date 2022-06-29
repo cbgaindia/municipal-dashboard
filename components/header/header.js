@@ -3,41 +3,45 @@ import Link from 'next/link';
 import { GlobalContext } from 'pages/_app';
 import Image from 'next/image';
 
-const Header = ({ title, color, searchPage }) => (
-  <header className="header" style={{ backgroundColor: color }}>
-    <div className="header__container wrapper">
-      <section className="branding">
-        <Link href="/">
-          <a>
-            <h1 className="branding__logo">{title}</h1>
-          </a>
-        </Link>
+const Header = ({ color, searchPage }) => {
+  const global = useContext(GlobalContext);
 
-        <span className="branding__seperator" />
+  return (
+    <header className="header" style={{ backgroundColor: color }}>
+      <div className="header__container wrapper">
+        <section className="branding">
+          <Link href="/">
+            <a>
+              <h1 className="branding__logo">{global.name}</h1>
+            </a>
+          </Link>
 
-        <a
-          className="branding__obi"
-          rel="noopener noreferrer"
-          href="https://openbudgetsindia.org/"
-        >
-          <Image
-            src="/assets/obi_header.png"
-            alt="Open Budgets India"
-            layout="fixed"
-            width={201}
-            height={28}
-          />
-        </a>
-      </section>
-      {!searchPage && (
-        <Link href="/search">
-          <a className="header__search">
-            Search <span className="screen-reader-text">Page</span>
+          <span className="branding__seperator" />
+
+          <a
+            className="branding__obi"
+            rel="noopener noreferrer"
+            href="https://openbudgetsindia.org/"
+          >
+            <Image
+              src="/assets/obi_header.png"
+              alt="Open Budgets India"
+              layout="fixed"
+              width={201}
+              height={28}
+            />
           </a>
-        </Link>
-      )}
-    </div>
-  </header>
-);
+        </section>
+        {!searchPage && (
+          <Link href="/search">
+            <a className="header__search">
+              Search <span className="screen-reader-text">Page</span>
+            </a>
+          </Link>
+        )}
+      </div>
+    </header>
+  );
+};
 
 export default Header;

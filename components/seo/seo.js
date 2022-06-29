@@ -1,8 +1,5 @@
 import Head from 'next/head';
-import { useContext } from 'react';
-import { GlobalContext } from 'pages/_app';
 import { getStrapiMedia } from 'lib/media';
-import { useRouter } from 'next/router';
 
 const Seo = ({ seo }) => {
   const fullSeo = {
@@ -10,12 +7,8 @@ const Seo = ({ seo }) => {
     metaDescription: `${seo.metaDescription}`,
     shareImage: seo.icon
       ? getStrapiMedia(seo.icon.url)
-      : getStrapiMedia(seo.shareImage),
+      : getStrapiMedia(seo.shareImage.url),
   };
-console.log(seo.icon, fullSeo);
-  // if (router.route == '/') {
-  //   fullSeo.metaTitle = `${title} | ${siteName}`;
-  // }
 
   return (
     <Head>

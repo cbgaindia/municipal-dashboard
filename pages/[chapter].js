@@ -5,11 +5,11 @@ import { fetchAPI } from 'lib/api';
 import { sortList, stripTable, tooltipKeyword } from 'utils/helpers';
 import useWindowDimensions from 'utils/useWindowDimensions';
 import Seo from 'components/seo/seo';
-import Header from 'components/header/header';
 import Navigation from 'components/navigation/navigation';
 import Menu from 'components/menu/menu';
 import Sidebar from 'components/sidebar/sidebar';
 import useLayoutEffect from 'utils/use-isomorphic-layout-effect';
+import { GlobalContext } from './_app';
 
 function goToTopHandler() {
   if (window.scrollY > 600)
@@ -17,10 +17,10 @@ function goToTopHandler() {
   else document.querySelector('.back-top').classList.remove('active');
 }
 
-const Chapter = ({ chapter, chapters }) => {
-  const { width } = useWindowDimensions();
-  console.log(chapter, chapters);
+const Chapter = ({ chapter }) => {
+  const global = React.useContext(GlobalContext);
 
+  const { width } = useWindowDimensions();
   useLayoutEffect(() => {
     const jumpIcon = document.querySelector('.back-top');
     gsap.registerPlugin(ScrollTrigger);
@@ -49,8 +49,10 @@ const Chapter = ({ chapter, chapters }) => {
     };
   }, [chapter, width]);
 
-  sortList(chapter.sections);
-  sortList(chapters);
+  React.useMemo(() => {
+    sortList(chapter.sections);
+    sortList(global.chapters);
+  }, [chapter, global]);
 
   const seo = {
     metaTitle: chapter.title,
@@ -59,15 +61,9 @@ const Chapter = ({ chapter, chapters }) => {
     icon: chapter.icon,
   };
 
-  function headerDesc() {
-    return <h2>{chapter.Title}</h2>;
-  }
-
   return (
     <>
       <Seo seo={seo} />
-
-      <Header desc={headerDesc()} color="#29314F" />
       {width < 1025 && chapter.sections.length > 0 && (
         <Menu chapter={chapter} isMobile={width < 1025} />
       )}
@@ -107,8 +103,8 @@ const Chapter = ({ chapter, chapters }) => {
       )}
 
       <Navigation
-        back={chapters[chapter.Chapter_No - 2]}
-        forward={chapters[chapter.Chapter_No]}
+        back={global.chapters[chapter.Chapter_No - 2]}
+        forward={global.chapters[chapter.Chapter_No]}
       />
       <a href="#top-of-site-pixel-anchor" type="button" className="back-top">
         <span className="screen-reader-text">Back to Top</span>
@@ -140,10 +136,9 @@ export async function getStaticPaths() {
 
 export async function getStaticProps({ params }) {
   const chapter = await fetchAPI(`/chapters?filters[slug]=${params.chapter}`);
-  const chapters = await fetchAPI(`/chapters`);
 
   return {
-    props: { chapter: chapter.data[0], chapters: chapters.data },
+    props: { chapter: chapter.data[0] },
     revalidate: 1,
   };
 }
