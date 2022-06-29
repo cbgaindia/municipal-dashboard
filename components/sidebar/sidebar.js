@@ -111,7 +111,7 @@ const Sidebar = ({ chapter }) => {
           >
             <a href={`#${article.slug}`}>
               <p>{LocaleString(index + 1)}</p>
-              <p>{article.Title}</p>
+              <p>{article.title}</p>
             </a>
             <ul className="sub-heading" />
           </li>

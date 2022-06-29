@@ -9,10 +9,10 @@ const Seo = ({ seo }) => {
     metaTitle: `${seo.metaTitle}`,
     metaDescription: `${seo.metaDescription}`,
     shareImage: seo.icon
-      ? getStrapiMedia(seo.icon)
+      ? getStrapiMedia(seo.icon.url)
       : getStrapiMedia(seo.shareImage),
   };
-
+console.log(seo.icon, fullSeo);
   // if (router.route == '/') {
   //   fullSeo.metaTitle = `${title} | ${siteName}`;
   // }

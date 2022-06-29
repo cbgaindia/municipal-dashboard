@@ -19,6 +19,7 @@ function goToTopHandler() {
 
 const Chapter = ({ chapter, chapters }) => {
   const { width } = useWindowDimensions();
+  console.log(chapter, chapters);
 
   useLayoutEffect(() => {
     const jumpIcon = document.querySelector('.back-top');
@@ -52,8 +53,8 @@ const Chapter = ({ chapter, chapters }) => {
   sortList(chapters);
 
   const seo = {
-    metaTitle: chapter.Title,
-    metaDescription: chapter.Desc,
+    metaTitle: chapter.title,
+    metaDescription: chapter.desc,
     article: true,
     icon: chapter.icon,
   };
@@ -82,18 +83,18 @@ const Chapter = ({ chapter, chapters }) => {
               <article className="section" id={article.slug} key={article.id}>
                 <div className="section__heading">
                   <span className="section__bar" />
-                  <h2>{article.Title}</h2>
+                  <h2>{article.title}</h2>
                   <a href={`#${article.slug}`} className="section__anchor">
                     <span aria-hidden="true">#</span>
                     <span className="screen-reader-text">
-                      {`Section titled ${article.Title}`}
+                      {`Section titled ${article.title}`}
                     </span>
                   </a>
                 </div>
 
                 <div
                   className="section__content"
-                  dangerouslySetInnerHTML={{ __html: article.Content }}
+                  dangerouslySetInnerHTML={{ __html: article.content }}
                 />
               </article>
             ))}
@@ -128,7 +129,7 @@ const Chapter = ({ chapter, chapters }) => {
 export async function getStaticPaths() {
   const chapters = await fetchAPI('/chapters');
   return {
-    paths: chapters.map((chapter) => ({
+    paths: chapters.data.map((chapter) => ({
       params: {
         chapter: chapter.slug,
       },
@@ -138,11 +139,11 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params }) {
-  const chapter = await fetchAPI(`/chapters?slug=${params.chapter}`);
+  const chapter = await fetchAPI(`/chapters?filters[slug]=${params.chapter}`);
   const chapters = await fetchAPI(`/chapters`);
 
   return {
-    props: { chapter: chapter[0], chapters },
+    props: { chapter: chapter.data[0], chapters: chapters.data },
     revalidate: 1,
   };
 }
