@@ -1,22 +1,23 @@
-import React from 'react';
-import Link from 'next/link';
+import Carousel from 'components/carousel/carousel';
+import Menu from 'components/menu/menu';
+import Navigation from 'components/navigation/navigation';
+import Seo from 'components/seo/seo';
+import Sidebar from 'components/sidebar/sidebar';
+import Suggestions from 'components/suggestions/suggestions';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
-import { getStrapiMedia } from 'lib/media';
 import { fetchAPI } from 'lib/api';
+import { getStrapiMedia } from 'lib/media';
+import React from 'react';
 import {
   romanizeNumber,
   sortList,
   stripTable,
   tooltipKeyword,
 } from 'utils/helpers';
-import useWindowDimensions from 'utils/useWindowDimensions';
-import Seo from 'components/seo/seo';
-import Navigation from 'components/navigation/navigation';
-import Menu from 'components/menu/menu';
-import Sidebar from 'components/sidebar/sidebar';
 import useLayoutEffect from 'utils/use-isomorphic-layout-effect';
-import Carousel from 'components/carousel/carousel';
+import useWindowDimensions from 'utils/useWindowDimensions';
+
 import { GlobalContext } from './_app';
 
 function goToTopHandler() {
@@ -43,7 +44,7 @@ const Chapter = ({ chapter }) => {
     jumpIcon.addEventListener('click', (e) => {
       e.preventDefault();
       window.setTimeout(() => {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
+        window.scrollTo({ behavior: 'smooth', top: 0 });
         document.querySelector('#top-of-site-pixel-anchor').focus({
           preventScroll: true,
         });
@@ -51,7 +52,7 @@ const Chapter = ({ chapter }) => {
     });
     return () => {
       jumpIcon.removeEventListener('click', () => {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
+        window.scrollTo({ behavior: 'smooth', top: 0 });
       });
       document.removeEventListener('scroll', goToTopHandler);
     };
@@ -63,10 +64,10 @@ const Chapter = ({ chapter }) => {
   }, [chapter, global]);
 
   const seo = {
-    metaTitle: chapter.title,
-    metaDescription: chapter.desc,
     article: true,
     icon: chapter.icon,
+    metaDescription: chapter.desc,
+    metaTitle: chapter.title,
   };
 
   return (
@@ -146,44 +147,7 @@ const Chapter = ({ chapter }) => {
         forward={global.chapters[chapter.chapter_no]}
         currentchapter={chapter.chapter_no}
       />
-      {/* <section className="seggestion-section-chapter-page">
-        <div className="wrapper">
-          <div className="suggestion_head">
-            <h2>You may also like</h2>
-          </div>
-          <div className="card_suggestion_container">
-            <ul className="card_suggestion_ul">
-              {global.chapters.map((chap, index) => {
-                if (chapter.chapter_no !== chap.chapter_no && index < 9)
-                  return (
-                    <li className="suggestion_card" key={chapter.id}>
-                      <Link key={chap.index} href={`/${chap.slug}`}>
-                        <a>
-                          <div className="suggestion_img_container">
-                            <img
-                              src={`${process.env.NEXT_PUBLIC_STRAPI_API_URL}${chap.icon.url}`}
-                              alt=""
-                            />
-                            <div className="text_suggestion_container">
-                              <div className="suggestion_roam">
-                                <p>{romanizeNumber(chap.chapter_no)}</p>
-                              </div>
-                              <div className="chapter_suggestion_head">
-                                <h4>{chap.title}</h4>
-                              </div>
-                            </div>
-                          </div>
-                        </a>
-                      </Link>
-                    </li>
-                  );
-                return null;
-              })}
-            </ul>
-          </div>
-          <div className="suggesstion_card_container" />
-        </div>
-      </section> */}
+      <Suggestions />
       <Carousel youtube={global.youtube} />
 
       <a href="#top-of-site-pixel-anchor" type="button" className="back-top">
@@ -205,12 +169,12 @@ const Chapter = ({ chapter }) => {
 export async function getStaticPaths() {
   const chapters = await fetchAPI('/chapters');
   return {
+    fallback: false,
     paths: chapters.data.map((chapter) => ({
       params: {
         chapter: chapter.slug,
       },
     })),
-    fallback: false,
   };
 }
 

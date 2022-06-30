@@ -1,4 +1,5 @@
 import Image from 'next/image';
+
 import * as data from './footer_data';
 
 const Footer = () => (

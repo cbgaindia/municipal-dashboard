@@ -1,9 +1,9 @@
-import React from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
-import { LocaleString, generateSubHeadings } from 'utils/helpers';
-import useIsomorphicLayoutEffect from 'utils/use-isomorphic-layout-effect';
 import Link from 'next/link';
+import React from 'react';
+import { generateSubHeadings, LocaleString } from 'utils/helpers';
+import useIsomorphicLayoutEffect from 'utils/use-isomorphic-layout-effect';
 
 function handleMenuAnimation() {
   const articles = gsap.utils.toArray('article');
@@ -13,26 +13,26 @@ function handleMenuAnimation() {
       `[keyid=${article.getAttribute('id')}]`
     );
     ScrollTrigger.create({
-      id: `st-id-${index}`,
-      trigger: article,
-      start: 'top 100px',
+      end: () => (index < articles.length ? 'top 100px' : 'end 100px'),
       endTrigger: () =>
         index == articles.length - 1 ? '.footer' : articles[index + 1],
-      end: () => (index < articles.length ? 'top 100px' : 'end 100px'),
-      refreshPriority: 1,
-      toggleActions: 'restart complete reverse reset',
+      id: `st-id-${index}`,
       onEnter() {
+        sideLink.classList.add('content--active');
+      },
+      onEnterBack() {
         sideLink.classList.add('content--active');
       },
       onLeave() {
         sideLink.classList.remove('content--active');
       },
-      onEnterBack() {
-        sideLink.classList.add('content--active');
-      },
       onLeaveBack() {
         sideLink.classList.remove('content--active');
       },
+      refreshPriority: 1,
+      start: 'top 100px',
+      toggleActions: 'restart complete reverse reset',
+      trigger: article,
     });
   });
 }
@@ -44,26 +44,26 @@ function handleSubheadingAnimation() {
       `li[subid=${subheading.getAttribute('id')}]`
     );
     ScrollTrigger.create({
-      id: `subheading-mobile-id`,
-      trigger: subheading,
-      start: 'top 70px',
+      end: () => (index < subheadings.length ? 'top 70px' : 'end 70px'),
       endTrigger: () =>
         index == subheadings.length - 1 ? '.footer' : subheadings[index + 1],
-      end: () => (index < subheadings.length ? 'top 70px' : 'end 70px'),
-      refreshPriority: 1,
-      toggleActions: 'restart complete reverse reset',
+      id: `subheading-mobile-id`,
       onEnter() {
+        subLink.classList.add('sub-heading__link--active');
+      },
+      onEnterBack() {
         subLink.classList.add('sub-heading__link--active');
       },
       onLeave() {
         subLink.classList.remove('sub-heading__link--active');
       },
-      onEnterBack() {
-        subLink.classList.add('sub-heading__link--active');
-      },
       onLeaveBack() {
         subLink.classList.remove('sub-heading__link--active');
       },
+      refreshPriority: 1,
+      start: 'top 70px',
+      toggleActions: 'restart complete reverse reset',
+      trigger: subheading,
     });
   });
 }

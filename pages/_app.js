@@ -1,12 +1,14 @@
 import 'styles/app.css';
+
+import Layout from 'components/layout/layout';
+import { fetchAPI } from 'lib/api';
 import App from 'next/app';
 import Head from 'next/head';
-import React, { createContext } from 'react';
-import { fetchAPI } from 'lib/api';
-import Layout from 'components/layout/layout';
-import NextNprogress from 'nextjs-progressbar';
 import Router from 'next/router';
+import NextNprogress from 'nextjs-progressbar';
+import React, { createContext } from 'react';
 import smoothscroll from 'smoothscroll-polyfill';
+
 import * as ga from '../lib/ga';
 
 export const GlobalContext = createContext({});
@@ -90,7 +92,7 @@ function MyApp({ Component, pageProps }) {
         startPosition={0.3}
         stopDelayMs={100}
         height={3}
-        options={{ easing: 'ease', speed: 300, showSpinner: false }}
+        options={{ easing: 'ease', showSpinner: false, speed: 300 }}
       />
       <GlobalContext.Provider value={global.data[0]}>
         <Layout>

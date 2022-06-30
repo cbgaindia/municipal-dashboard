@@ -1,12 +1,13 @@
+import 'react-lite-youtube-embed/dist/LiteYouTubeEmbed.css';
+
 import React, { useEffect } from 'react';
 import LiteYouTubeEmbed from 'react-lite-youtube-embed';
-import 'react-lite-youtube-embed/dist/LiteYouTubeEmbed.css';
 
 function updateSlider(n) {
   const scrollPos = document.querySelector('.videos').scrollLeft;
   document
     .querySelector('.videos')
-    .scrollTo({ left: scrollPos + n * 350, behavior: 'smooth' });
+    .scrollTo({ behavior: 'smooth', left: scrollPos + n * 350 });
 }
 
 function scrollOnDrag() {

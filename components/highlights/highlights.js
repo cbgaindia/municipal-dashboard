@@ -1,5 +1,5 @@
-import React, { useEffect } from 'react';
 import Link from 'next/link';
+import React, { useEffect } from 'react';
 
 const Highlight = ({ data }) => {
   let pos = 0;
@@ -17,7 +17,9 @@ const Highlight = ({ data }) => {
       .classList.add('news__item--current');
   }
   useEffect(() => {
-    document.querySelector('#highlight-0').classList.add('news__item--current');
+    document
+      .querySelector('#highlight-0')
+      .classList.add('news__item--current');
   }, []);
 
   return (

@@ -1,5 +1,4 @@
 export const Dashboards = {
-  name: 'Dashboards',
   links: [
     {
       title: 'Union Budget Explorer 2021-22',
@@ -52,10 +51,10 @@ export const Dashboards = {
       value: 'https://cbgaindia.github.io/story-generator',
     },
   ],
+  name: 'Dashboards',
 };
 
 export const Budget_Datasets = {
-  name: 'Budget Datasets',
   links: [
     {
       title: 'Government-wise Budget Data',
@@ -70,10 +69,10 @@ export const Budget_Datasets = {
       value: 'https://openbudgetsindia.org/dataset',
     },
   ],
+  name: 'Budget Datasets',
 };
 
 export const OBI_Platform = {
-  name: 'OBI Platform',
   links: [
     {
       title: 'How to use the OBI Platform',
@@ -100,6 +99,7 @@ export const OBI_Platform = {
       value: 'https://youtu.be/TovrkaW5HZY',
     },
   ],
+  name: 'OBI Platform',
 };
 
 export const Attr_Links = {
@@ -123,15 +123,15 @@ export const Attr_Logos = {
   links: [
     {
       alt: 'creative commons licence',
+      dimensions: [67, 24],
       src: '/assets/icons/cc-by-logo.svg',
       value: 'https://creativecommons.org/licenses/by/4.0/',
-      dimensions: [67, 24],
     },
     {
       alt: 'open definition licence',
+      dimensions: [80, 15],
       src: '/assets/icons/open_data_logo.png',
       value: 'https://opendefinition.org/od/2.1/en/',
-      dimensions: [80, 15],
     },
   ],
 };

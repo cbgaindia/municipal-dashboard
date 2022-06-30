@@ -2,16 +2,16 @@ import { useEffect, useState } from 'react';
 
 function useWindowDimensions() {
   const _a = useState({
-    width: undefined,
     height: undefined,
+    width: undefined,
   });
   const windowDimensions = _a[0];
   const setWindowDimensions = _a[1];
   useEffect(() => {
     function handleResize() {
       setWindowDimensions({
-        width: window.innerWidth,
         height: window.innerHeight,
+        width: window.innerWidth,
       });
     }
     handleResize();

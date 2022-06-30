@@ -1,13 +1,13 @@
-import React, { useState, useMemo, useEffect } from 'react';
-import { MeiliSearch } from 'meilisearch';
 import Header from 'components/header/header';
-import Link from 'next/link';
-import { Truncate, debounce } from 'utils/helpers';
 import Seo from 'components/seo/seo';
+import { MeiliSearch } from 'meilisearch';
+import Link from 'next/link';
+import React, { useEffect, useMemo, useState } from 'react';
+import { debounce, Truncate } from 'utils/helpers';
 
 const client = new MeiliSearch({
-  host: process.env.NEXT_PUBLIC_MEILISEARCH_URL,
   apiKey: process.env.NEXT_PUBLIC_MEILISEARCH_API,
+  host: process.env.NEXT_PUBLIC_MEILISEARCH_URL,
 });
 
 const Search = () => {
@@ -41,18 +41,18 @@ const Search = () => {
 
       await index
         .search(e, {
-          limit: 10,
           attributesToCrop: ['formattedContent'],
-          cropLength: 170,
           attributesToHighlight: ['formattedContent', 'Title'],
+          cropLength: 170,
+          limit: 10,
         })
         .then((res) => {
           const list = res.hits.map((elm) => ({
-            title: elm._formatted.Title,
-            slug: `${elm.chapter ? elm.chapter.slug : '/'}#${elm.slug}`,
-            content: formatContent(elm._formatted.formattedContent),
-            chapter_Title: elm.chapter.Title,
             chapter_Slug: elm.chapter.slug,
+            chapter_Title: elm.chapter.Title,
+            content: formatContent(elm._formatted.formattedContent),
+            slug: `${elm.chapter ? elm.chapter.slug : '/'}#${elm.slug}`,
+            title: elm._formatted.Title,
           }));
 
           setSearch(list);

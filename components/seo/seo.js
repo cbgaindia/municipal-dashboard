@@ -1,10 +1,10 @@
-import Head from 'next/head';
 import { getStrapiMedia } from 'lib/media';
+import Head from 'next/head';
 
 const Seo = ({ seo }) => {
   const fullSeo = {
-    metaTitle: `${seo.metaTitle}`,
     metaDescription: `${seo.metaDescription}`,
+    metaTitle: `${seo.metaTitle}`,
     shareImage: seo.icon
       ? getStrapiMedia(seo.icon.url)
       : getStrapiMedia(seo.shareImage.url),

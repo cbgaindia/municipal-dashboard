@@ -1,7 +1,7 @@
-import React from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
-import { LocaleString, generateSubHeadings } from 'utils/helpers';
+import React from 'react';
+import { generateSubHeadings, LocaleString } from 'utils/helpers';
 import useLayoutEffect from 'utils/use-isomorphic-layout-effect';
 import useWindowDimensions from 'utils/useWindowDimensions';
 
@@ -12,24 +12,24 @@ function handleSidebarAnimation() {
       `[keyid=${article.getAttribute('id')}]`
     );
     ScrollTrigger.create({
-      id: `st-id`,
-      trigger: article,
-      start: 'top 60px',
       end: 'bottom 10px',
-      refreshPriority: 1,
-      toggleActions: 'restart complete reverse reset',
+      id: `st-id`,
       onEnter() {
+        sideLink.classList.add('content--active');
+      },
+      onEnterBack() {
         sideLink.classList.add('content--active');
       },
       onLeave() {
         sideLink.classList.remove('content--active');
       },
-      onEnterBack() {
-        sideLink.classList.add('content--active');
-      },
       onLeaveBack() {
         sideLink.classList.remove('content--active');
       },
+      refreshPriority: 1,
+      start: 'top 60px',
+      toggleActions: 'restart complete reverse reset',
+      trigger: article,
     });
   });
 }
@@ -41,28 +41,28 @@ function handleSubheadingAnimation() {
       `li[subid=${subheading.getAttribute('id')}]`
     );
     ScrollTrigger.create({
-      id: `subheading-id`,
-      trigger: subheading,
-      start: 'top 60px',
+      end: () => (index < subheadings.length ? 'top 60px' : 'end 60px'),
       endTrigger: () =>
         index == subheadings.length - 1
           ? subheading.parentElement.parentElement.nextSibling
           : subheadings[index + 1],
-      end: () => (index < subheadings.length ? 'top 60px' : 'end 60px'),
-      refreshPriority: 1,
-      toggleActions: 'restart complete reverse reset',
+      id: `subheading-id`,
       onEnter() {
+        subLink.classList.add('sub-heading__link--active');
+      },
+      onEnterBack() {
         subLink.classList.add('sub-heading__link--active');
       },
       onLeave() {
         subLink.classList.remove('sub-heading__link--active');
       },
-      onEnterBack() {
-        subLink.classList.add('sub-heading__link--active');
-      },
       onLeaveBack() {
         subLink.classList.remove('sub-heading__link--active');
       },
+      refreshPriority: 1,
+      start: 'top 60px',
+      toggleActions: 'restart complete reverse reset',
+      trigger: subheading,
     });
   });
 }

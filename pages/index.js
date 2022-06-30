@@ -1,10 +1,11 @@
-import React from 'react';
-import Link from 'next/link';
-import { fetchAPI } from 'lib/api';
-import Seo from 'components/seo/seo';
 import Card from 'components/card/card';
-import { sortList } from 'utils/helpers';
 import Carousel from 'components/carousel/carousel';
+import Seo from 'components/seo/seo';
+import { fetchAPI } from 'lib/api';
+import Link from 'next/link';
+import React from 'react';
+import { sortList } from 'utils/helpers';
+
 import { GlobalContext } from './_app';
 
 export default function Home() {
@@ -30,12 +31,12 @@ export default function Home() {
         <ul className="home__cards">
           {chapterList?.map((chapter, index) => {
             const chapterDetails = {
-              title: chapter.title,
-              slug: chapter.slug,
-              icon: chapter.icon,
               Desc: chapter.Desc,
-              totalArticles: chapter.sections?.length,
+              icon: chapter.icon,
               index,
+              slug: chapter.slug,
+              title: chapter.title,
+              totalArticles: chapter.sections?.length,
             };
             return (
               <React.Fragment key={chapter.id}>
