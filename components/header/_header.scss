@@ -37,6 +37,13 @@
         object-fit: contain;
       }
     }
+
+    @include respond-to('lt-mobile') {
+      &__seperator,
+      &__obi {
+        display: none;
+      }
+    }
   }
 
   h2 {
