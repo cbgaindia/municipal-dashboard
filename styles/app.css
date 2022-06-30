@@ -1145,7 +1145,13 @@ button {
   border-radius: 15px 15px 0 0;
 }
 .chapter__content {
-  padding: 32px 32px 32px 98px;
+  padding: 32px;
+  padding-left: 82px;
+}
+@media (max-width: 1024px) {
+  .chapter__content {
+    padding-left: 16px;
+  }
 }
 .chapter__content > h1 {
   color: #2e2f33;
@@ -1230,7 +1236,6 @@ button {
 }
 .chapter .section figure img {
   width: 100%;
-  margin: 1rem 0;
 }
 @media (max-width: 1024px) {
   .chapter .section {
@@ -1243,7 +1248,7 @@ button {
     scroll-margin-top: 65px;
   }
   .chapter .section__content {
-    margin-left: 2rem;
+    margin-left: 8px;
   }
 }
 .chapter .section a {
