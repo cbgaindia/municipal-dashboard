@@ -113,8 +113,9 @@ const Chapter = ({ chapter }) => {
                   <div className="chapter_body_padding">
                     <div className="section__heading">
                       <h2 className="section_number_chap">
-                        {index + 1}. <span className="section__bar" />{' '}
-                        {article.title}
+                        {`${index + 1}.`}
+                        <span className="section__bar" />
+                        <span>{article.title}</span>
                       </h2>
                       <a href={`#${article.slug}`} className="section__anchor">
                         <span aria-hidden="true">{/* # */}</span>
@@ -145,7 +146,7 @@ const Chapter = ({ chapter }) => {
         forward={global.chapters[chapter.chapter_no]}
         currentchapter={chapter.chapter_no}
       />
-      <section className="seggestion-section-chapter-page">
+      {/* <section className="seggestion-section-chapter-page">
         <div className="wrapper">
           <div className="suggestion_head">
             <h2>You may also like</h2>
@@ -182,7 +183,7 @@ const Chapter = ({ chapter }) => {
           </div>
           <div className="suggesstion_card_container" />
         </div>
-      </section>
+      </section> */}
       <Carousel youtube={global.youtube} />
 
       <a href="#top-of-site-pixel-anchor" type="button" className="back-top">

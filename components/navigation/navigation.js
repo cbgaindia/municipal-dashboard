@@ -1,100 +1,48 @@
 import Link from 'next/link';
 import { romanizeNumber } from 'utils/helpers';
 
-const Navigation = ({
-  back,
-  forward,
-  currentchapter = 4,
-  isHindi = false,
-}) => (
-  // <footer className="navigation">
-  //   <div className="navigation__container wrapper">
-  //     <section className="navigation__section">
-  //       {back != undefined && (
-  //         <Link href={`/${back.slug}`}>
-  //           <a className="navigation__button navigation__button--back">
-  //             <img src="assets/icons/arrowBack.svg" alt="" />
-  //             <span>
-  //               <p>go back to:</p>
-  //               <h2>{back.Title}</h2>
-  //             </span>
-  //           </a>
-  //         </Link>
-  //       )}
-  //     </section>
-
-  //     <section className="navigation__section">
-  //       {forward != undefined && (
-  //         <>
-  //           <Link href={`/${forward.slug}`}>
-  //             <a className="navigation__button navigation__button--forward">
-  //               <img src="assets/icons/arrowBack.svg" alt="" />
-  //               <span>
-  //                 <p>read next:</p>
-  //                 <h2>{forward.Title}</h2>
-  //               </span>
-  //             </a>
-  //           </Link>
-  //         </>
-  //       )}
-  //     </section>
-  //   </div>
-  // </footer>
-  <section className="fowrdard_and_backward_container">
+const Navigation = ({ back, forward, isHindi = false }) => (
+  <section className="navigation">
     <div className="wrapper">
-      <div
-        className={`naviagetion_container_new ${
-          currentchapter === 1
-            ? 'align-item-right'
-            : currentchapter === 12
-            ? 'align-item-left'
-            : ''
-        }`}
-      >
+      <div className={`navigation__container `}>
         {back != undefined && (
-          <div className="new_pre_chaper">
-            <Link href={isHindi ? `/hn/${back.slug}` : `/${back.slug}`}>
-              <a className="navigation__button_new navigation__button_new--back">
-                <div className="navaigation_img">
-                  <div className="chapter_page_roam_navigation_page">
-                    <p>{romanizeNumber(back.Chapter_No)}</p>
-                  </div>
-                  <img
-                    className="image_pre_next_navigation"
-                    src={`${process.env.NEXT_PUBLIC_STRAPI_API_URL}${back.icon.url}`}
-                    alt=""
-                  />
-                </div>
-                <span>
-                  <p>{isHindi ? 'पूर्व सेक्शन' : 'Previous Section'}</p>
-                  <h2>{isHindi ? back.TitleHindi : back.Title}</h2>
+          <Link href={isHindi ? `/hn/${back.slug}` : `/${back.slug}`}>
+            <a className="navigation__back">
+              <div className="navigation__img">
+                <span className="navigation__id">
+                  {romanizeNumber(back.chapter_no)}
                 </span>
-              </a>
-            </Link>
-          </div>
+                <img
+                  src={`${process.env.NEXT_PUBLIC_STRAPI_API_URL}${back.icon.url}`}
+                  alt=""
+                />
+              </div>
+              <span>
+                <p>{isHindi ? 'पूर्व सेक्शन' : 'Previous Section'}</p>
+                <h2>{back.title}</h2>
+              </span>
+            </a>
+          </Link>
         )}
 
         {forward != undefined && (
-          <div className="new_next_chaper">
-            <Link href={isHindi ? `/hn/${forward.slug}` : `/${forward.slug}`}>
-              <a className="navigation__button_new navigation__button_new--forward">
-                <div className="navaigation_img">
-                  <div className="chapter_page_roam_navigation_page">
-                    <p>{romanizeNumber(forward.Chapter_No)}</p>
-                  </div>
-                  <img
-                    className="image_pre_next_navigation"
-                    src={`${process.env.NEXT_PUBLIC_STRAPI_API_URL}${forward.icon.url}`}
-                    alt=""
-                  />
-                </div>
-                <span>
-                  <p>{isHindi ? 'अगला सेक्शन' : 'Next Section'}</p>
-                  <h2>{isHindi ? forward.TitleHindi : forward.Title}</h2>
+          <Link href={isHindi ? `/hn/${forward.slug}` : `/${forward.slug}`}>
+            <a className="navigation__next">
+              <div className="navigation__img">
+                <span className="navigation__id">
+                  {romanizeNumber(forward.chapter_no)}
                 </span>
-              </a>
-            </Link>
-          </div>
+                <img
+                  src={`${process.env.NEXT_PUBLIC_STRAPI_API_URL}${forward.icon.url}`}
+                  alt=""
+                />
+              </div>
+              <span>
+                <p>{isHindi ? 'अगला सेक्शन' : 'Next Section'}</p>
+                <h2>{forward.title}</h2>
+              </span>
+            </a>
+          </Link>
         )}
       </div>
     </div>
