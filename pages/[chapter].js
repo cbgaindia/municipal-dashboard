@@ -147,7 +147,7 @@ const Chapter = ({ chapter }) => {
         forward={global.chapters[chapter.chapter_no]}
         currentchapter={chapter.chapter_no}
       />
-      <Suggestions />
+      <Suggestions chapter={chapter} chapters={global.chapters} />
       <Carousel youtube={global.youtube} />
 
       <a href="#top-of-site-pixel-anchor" type="button" className="back-top">
