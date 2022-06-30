@@ -1,11 +1,19 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import router from 'next/router';
 import { GlobalContext } from 'pages/_app';
-import React, { useContext } from 'react';
+import React from 'react';
 
-const Header = ({ color, searchPage }) => {
-  const global = useContext(GlobalContext);
+const Header = ({ color }) => {
+  const global = React.useContext(GlobalContext);
 
+  React.useEffect(() => {
+    if (router.asPath == '/search') {
+      document
+        .querySelector('.header__search')
+        .classList.add('header__search--hide');
+    }
+  }, [router]);
   return (
     <header className="header" style={{ backgroundColor: color }}>
       <div className="header__container wrapper">
@@ -32,13 +40,12 @@ const Header = ({ color, searchPage }) => {
             />
           </a>
         </section>
-        {!searchPage && (
-          <Link href="/search">
-            <a className="header__search">
-              Search <span className="screen-reader-text">Page</span>
-            </a>
-          </Link>
-        )}
+
+        <Link href="/search">
+          <a className="header__search">
+            Search <span className="screen-reader-text">Page</span>
+          </a>
+        </Link>
       </div>
     </header>
   );

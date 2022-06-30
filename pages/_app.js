@@ -23,6 +23,16 @@ function MyApp({ Component, pageProps }) {
 
       // change focus to top
       document.querySelector('#top-of-site-pixel-anchor').focus();
+
+      if (Router.asPath == '/search') {
+        document
+          .querySelector('.header__search')
+          .classList.add('header__search--hide');
+      } else {
+        document
+          .querySelector('.header__search')
+          .classList.remove('header__search--hide');
+      }
     };
 
     const resetScroll = () => {

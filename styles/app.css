@@ -228,6 +228,9 @@ button {
   background-color: #273051;
   border: 2px solid #4b4797;
 }
+.header__search--hide {
+  display: none;
+}
 @media (max-width: 768px) {
   .header {
     position: static;

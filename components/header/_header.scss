@@ -59,6 +59,10 @@
 
   &__search {
     @include search_button;
+
+    &--hide {
+      display: none;
+    }
   }
 
   @include respond-to('lt-tablet') {
