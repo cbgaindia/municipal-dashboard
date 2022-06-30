@@ -1,68 +1,67 @@
 @use '../../styles/tools' as *;
 
 .header {
-	background-color: #212142;
-	display: grid;
-	justify-content: center;
-	color: #fff;
+  background-color: #212142;
+  justify-content: center;
+  color: #fff;
 
-	&__container {
-		display: grid;
-		grid-template-columns: max-content 1fr;
-		grid-template-rows: max-content 1fr;
-		position: relative;
-	}
+  &__container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+  }
 
-	.branding {
-		display: flex;
-		align-items: center;
-		padding: 16px 0;
-		height: max-content;
+  .branding {
+    display: flex;
+    align-items: center;
+    padding: 16px 0;
+    height: max-content;
 
-		&__logo {
-			width: max-content;
-			font-size: 1.3rem;
-			font-weight: normal;
-		}
+    &__logo {
+      width: max-content;
+      font-size: 1.3rem;
+      font-weight: normal;
+    }
 
-		&__seperator {
-			border-right: 1px solid rgba(255, 255, 255, 0.4);
-			margin: 0 16px;
-			height: 28px;
-		}
-		&__obi {
-			height: 28px;
+    &__seperator {
+      border-right: 1px solid rgba(255, 255, 255, 0.4);
+      margin: 0 16px;
+      height: 28px;
+    }
+    &__obi {
+      height: 28px;
 
-			img {
-				width: 11rem;
-				object-fit: contain;
-			}
-		}
-	}
+      img {
+        width: 11rem;
+        object-fit: contain;
+      }
+    }
+  }
 
-	h2 {
-		font-size: 1.5rem;
-		font-weight: 400;
-		align-self: flex-end;
-		width: 100%;
-	}
+  h2 {
+    font-size: 1.5rem;
+    font-weight: 400;
+    align-self: flex-end;
+    width: 100%;
+  }
 
-	&__search {
-		@include search_button;
-	}
+  &__search {
+    @include search_button;
+  }
 
-	@include respond-to('lt-tablet') {
-		display: flex;
-		padding: 1rem 2rem;
+  @include respond-to('lt-tablet') {
+    display: flex;
+    padding: 1rem 2rem;
 
-		&__container {
-			width: 100%;
-			padding: 0;
-			grid-template-columns: 1fr;
-		}
+    &__container {
+      width: 100%;
+      padding: 0;
+      grid-template-columns: 1fr;
+    }
 
-		&__search {
-			display: none;
-		}
-	}
+    &__search {
+      display: none;
+    }
+  }
 }
