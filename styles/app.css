@@ -761,10 +761,8 @@ button {
   gap: 32px;
   align-items: center;
   flex-grow: 1;
-  max-height: 200px;
   border-radius: 10px;
   background: #fff;
-  max-height: 200px;
 }
 .navigation__container > a img {
   max-width: 200px;
@@ -809,6 +807,9 @@ button {
   font-size: 14px;
   font-weight: 700;
 }
+.navigation__back img {
+  border-radius: 10px 0 0 10px;
+}
 .navigation__next {
   justify-content: flex-end;
   text-align: end;
@@ -825,12 +826,15 @@ button {
 .navigation__next img {
   border-radius: 0 10px 10px 0;
 }
-@media (max-width: 768px) {
-  .navigation__section a span p {
-    font-size: 0.8rem;
+@media (max-width: 480px) {
+  .navigation__id {
+    height: 20px;
+    width: 20px;
+    top: 8px;
+    left: 8px;
   }
-  .navigation__section a span h2 {
-    font-size: 1rem;
+  .navigation a img {
+    max-width: 120px;
   }
 }
 

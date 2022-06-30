@@ -13,11 +13,9 @@
       gap: 32px;
       align-items: center;
       flex-grow: 1;
-      max-height: 200px;
 
       border-radius: 10px;
       background: #fff;
-      max-height: 200px;
 
       img {
         max-width: 200px;
@@ -67,6 +65,12 @@
     font-weight: 700;
   }
 
+  &__back {
+    img {
+      border-radius: 10px 0 0 10px;
+    }
+  }
+
   &__next {
     justify-content: flex-end;
     text-align: end;
@@ -88,19 +92,15 @@
     }
   }
 
-  @include respond-to('lt-tablet') {
-    &__section {
-      a {
-        span {
-          p {
-            font-size: 0.8rem;
-          }
-
-          h2 {
-            font-size: 1rem;
-          }
-        }
-      }
+  @include respond-to('lt-mobile') {
+    &__id {
+      height: 20px;
+      width: 20px;
+      top: 8px;
+      left: 8px;
+    }
+    a img {
+      max-width: 120px;
     }
   }
 }
