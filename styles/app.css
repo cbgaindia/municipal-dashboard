@@ -989,14 +989,11 @@ button {
   font-weight: 500 !important;
 }
 
-.sidebar {
-  margin-left: -36px;
-  width: 17rem;
-}
 .sidebar .content {
   list-style: none;
   padding: 0;
-  background: rgba(66, 47, 161, 0.05);
+  border-top: 7px solid #363370;
+  background: #fff;
   border-radius: 10px;
   position: -webkit-sticky;
   position: sticky;
@@ -1010,6 +1007,10 @@ button {
   align-items: center;
   margin: 0.5rem;
   font-size: 16px;
+  border-bottom: 1px solid #ddd;
+}
+.sidebar .content__link:last-child {
+  border-bottom: 0;
 }
 .sidebar .content__link a {
   display: block;
@@ -1106,6 +1107,7 @@ button {
   margin: 2rem auto;
   display: grid;
   grid-template-columns: 17rem 1fr;
+  gap: 32px;
 }
 .chapter--blur {
   filter: blur(5px);
