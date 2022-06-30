@@ -1,9 +1,6 @@
 @use '../../styles/tools' as *;
 
 .sidebar {
-  // margin-left: -36px;
-  // width: 17rem;
-
   .content {
     list-style: none;
     padding: 0;
@@ -11,7 +8,7 @@
     background: #fff;
     border-radius: 10px;
     position: sticky;
-    top: 1rem;
+    top: 96px;
     max-height: 75vh;
     overflow-y: auto;
 

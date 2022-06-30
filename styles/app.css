@@ -152,6 +152,11 @@ button {
   background-color: #212142;
   justify-content: center;
   color: #fff;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  isolation: isolate;
+  z-index: 100;
 }
 .header__container {
   display: flex;
@@ -225,6 +230,7 @@ button {
 }
 @media (max-width: 768px) {
   .header {
+    position: static;
     display: flex;
     padding: 1rem 2rem;
   }
@@ -997,7 +1003,7 @@ button {
   border-radius: 10px;
   position: -webkit-sticky;
   position: sticky;
-  top: 1rem;
+  top: 96px;
   max-height: 75vh;
   overflow-y: auto;
   z-index: 1;
