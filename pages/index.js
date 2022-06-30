@@ -31,7 +31,7 @@ export default function Home() {
         <ul className="home__cards">
           {chapterList?.map((chapter, index) => {
             const chapterDetails = {
-              Desc: chapter.Desc,
+              Desc: chapter.desc,
               icon: chapter.icon,
               index,
               slug: chapter.slug,
