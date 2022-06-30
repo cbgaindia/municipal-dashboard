@@ -1,18 +1,23 @@
-import Header from 'components/header/header';
 import Seo from 'components/seo/seo';
 import { MeiliSearch } from 'meilisearch';
 import Link from 'next/link';
 import React, { useEffect, useMemo, useState } from 'react';
 import { debounce, Truncate } from 'utils/helpers';
 
-const client = new MeiliSearch({
-  apiKey: process.env.NEXT_PUBLIC_MEILISEARCH_API,
-  host: process.env.NEXT_PUBLIC_MEILISEARCH_URL,
-});
+import { GlobalContext } from './_app';
+
+const client = process.env.NEXT_PUBLIC_MEILISEARCH_API
+  ? new MeiliSearch({
+      apiKey: process.env.NEXT_PUBLIC_MEILISEARCH_API,
+      host: process.env.NEXT_PUBLIC_MEILISEARCH_URL,
+    })
+  : {};
 
 const Search = () => {
   const [search, setSearch] = useState([]);
   const [showSearch, setShowSearch] = useState(false);
+
+  const global = React.useContext(GlobalContext);
 
   useEffect(() => {
     const form = document.querySelector('.search__form');
@@ -27,7 +32,8 @@ const Search = () => {
   }, []);
 
   const seo = {
-    metaTitle: 'Search',
+    ...global.seo,
+    metaTitle: 'Search | Municipal Dashboard',
   };
 
   function formatContent(content) {
@@ -37,27 +43,32 @@ const Search = () => {
 
   async function onChange(e) {
     if (e.length > 0) {
-      const index = client.index('sections');
+      const index = client.index && client.index('sections');
 
-      await index
-        .search(e, {
-          attributesToCrop: ['formattedContent'],
-          attributesToHighlight: ['formattedContent', 'Title'],
-          cropLength: 170,
-          limit: 10,
-        })
-        .then((res) => {
-          const list = res.hits.map((elm) => ({
-            chapter_Slug: elm.chapter.slug,
-            chapter_Title: elm.chapter.Title,
-            content: formatContent(elm._formatted.formattedContent),
-            slug: `${elm.chapter ? elm.chapter.slug : '/'}#${elm.slug}`,
-            title: elm._formatted.Title,
-          }));
-
-          setSearch(list);
-          setShowSearch(true);
-        });
+      if (index)
+        await index
+          .search(e, {
+            attributesToCrop: ['formattedContent'],
+            attributesToHighlight: ['formattedContent', 'Title'],
+            cropLength: 170,
+            limit: 10,
+          })
+          .then((res) => {
+            const list = res.hits.reduce((result, elm) => {
+              if (elm.chapter) {
+                result.push({
+                  chapter_Slug: elm.chapter.slug,
+                  chapter_Title: elm.chapter.Title,
+                  content: formatContent(elm._formatted.formattedContent),
+                  slug: `${elm.chapter ? elm.chapter.slug : '/'}#${elm.slug}`,
+                  title: elm._formatted.Title,
+                });
+              }
+              return result;
+            }, []);
+            setSearch(list);
+            setShowSearch(true);
+          });
     } else {
       setSearch([]);
       setShowSearch(false);
@@ -69,8 +80,6 @@ const Search = () => {
   return (
     <>
       <Seo seo={seo} />
-
-      <Header desc={<h2>Search</h2>} color="#29314F" searchPage />
 
       <div className="skiptarget">
         <span id="maincontent">-</span>
