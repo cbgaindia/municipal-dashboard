@@ -32,7 +32,7 @@ a {
 }
 
 :root {
-  font-size: 12px;
+  font-size: 14px;
 
   @include respond-to('mt-mobile') {
     font-size: 16px;
@@ -102,10 +102,13 @@ button {
 }
 
 .wrapper {
-  min-width: 300px;
-  max-width: 1200px;
-  width: 90vw;
-  margin: 0 auto;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+
+  width: 100%;
+  max-width: 1216px;
 }
 
 .screen-reader-text {
