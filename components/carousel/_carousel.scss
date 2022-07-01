@@ -48,7 +48,6 @@
 		display: flex;
 		scrollbar-width: none;
 		user-select: none;
-		cursor: grab;
 		margin-bottom: 1.5rem;
 		list-style: none;
 		align-self: flex-end;
@@ -58,8 +57,8 @@
 			display: none;
 		}
 
-		&.active {
-			cursor: grabbing;
+		&.hover {
+			cursor: pointer;
 		}
 
 	}
@@ -83,15 +82,45 @@
 	cursor: pointer;
 	width: 360px;
 	height: 190px;
-	margin-right: 2rem;
+	margin-right: 0;
+	padding-right: 2rem;
+	border-radius: 8px;
+}
+.yt-lite > .lty-playbtn {
+	display:none;
 }
 
-/* play button triangle */
-.yt-lite > .lty-playbtn:before {
-	content: '';
-	border-top: 15px solid transparent;
-	border-left: 30px solid #fff;
-	border-bottom: 15px solid transparent;
-	width: 0;
-	height: 0;
+li.youtubelist-text {
+	margin-right: 2rem;
+	border-radius: 8px;
+	position: relative;
+  }
+
+li.youtubelist-text > .youtubetext-overlay {
+	display: flex;
+	justify-content: center;
+	align-items: end;
+	z-index: 1;
+	padding-bottom: 20px;
+	position: absolute;
+	height: 100%;
+	text-align: center;
+	width: 100%;
+	background: linear-gradient(bottom, black, transparent);
+
+   p {
+	z-index: 1;
+	color: #fff;
+	font-size: 14px;
+	width: 80%;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+  }
+}
+
+  li.youtubelist-text:hover .youtubetext-overlay {
+   visibility: hidden;
+   opacity: 0;
+   transition: visibility 0s, opacity 0.5s linear;
 }

@@ -79,7 +79,7 @@ const Carousel = ({ youtube }) => {
   return (
     <div className="carousel">
       <div className="carousel__container wrapper">
-        <p className="carousel__heading">Related Videos</p>
+        <p className="carousel__heading"> Related Videos </p>
         <div className="carousel__controls">
           <button
             type="button"
@@ -126,7 +126,11 @@ const Carousel = ({ youtube }) => {
               key={`youtube-${index}`}
               role="presentation"
               title={video.title}
+              className="youtubelist-text"
             >
+              <div className="youtubetext-overlay">
+                <p>{video.title}</p>
+              </div>
               <LiteYouTubeEmbed
                 key={`carousel-${index}`}
                 id={handleVideoLink(video.link)}

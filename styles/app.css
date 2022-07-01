@@ -335,55 +335,52 @@ button {
   justify-self: center;
   width: 100%;
   max-width: 265px;
-  height: 320px;
   margin-bottom: 1.5rem;
-  border-radius: 12px;
+  border-radius: 10px;
   color: #fff;
   border: 2px solid white;
   position: relative;
   display: flex;
   align-items: flex-end;
-  background: linear-gradient(218.46deg, hsl(232deg, 100%, 28%) 9.79%, hsl(262deg, 38%, 42%) 74.73%);
+  box-sizing: content-box;
+  list-style: none;
+}
+.card__text_container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 16px;
 }
 .card__content {
+  border: 1px solid black;
   height: 100%;
-  display: grid;
-  align-items: center;
   width: 100%;
-  text-align: center;
   position: relative;
-  transition: transform 700ms cubic-bezier(0.19, 1, 0.22, 1);
   z-index: 1;
+  border-radius: 10px;
 }
-.card__content > * + * {
-  margin-top: 1rem;
-}
-.card:hover, .card:focus-within {
-  border: 2px solid #4b4797;
-  box-shadow: 0px 8px 16px rgba(116, 111, 111, 0.14);
-}
-.card__image {
-  height: -webkit-max-content;
-  height: -moz-max-content;
-  height: max-content;
-  align-self: center;
-}
-.card img {
-  justify-self: center;
-  -o-object-fit: scale-down;
-     object-fit: scale-down;
+.card__icon {
+  height: 193px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
 }
 .card__title {
-  padding: 0 0.5rem;
   height: -webkit-max-content;
   height: -moz-max-content;
   height: max-content;
   align-self: flex-start;
   color: #0f1525;
-  font-weight: 600;
-  font-size: 1.3rem;
-  line-height: 135%;
-  order: 1;
+  font-weight: 800;
+  font-size: 1.2rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  padding-bottom: 10px;
+  line-height: 1.8rem;
 }
 .card__soon {
   position: absolute;
@@ -391,80 +388,11 @@ button {
   left: -3px;
 }
 .card__desc {
-  position: absolute;
-  font-size: 1rem;
-  padding: 0 1rem;
-  color: #000000;
-  opacity: 0;
-}
-.card[bgcolor="1"] {
-  background: linear-gradient(218.46deg, #9779d3 9.79%, #febbba 74.73%);
-}
-.card[bgcolor="2"] {
-  background: linear-gradient(218.46deg, #f4b65e 9.79%, #e8d5d4 96.99%);
-}
-.card[bgcolor="3"] {
-  background: linear-gradient(218.46deg, #479aaa 9.79%, #c9d8fc 96.99%);
-}
-.card[bgcolor="4"] {
-  background: linear-gradient(218.46deg, #c9d8fc 9.79%, #e8d5d4 96.99%);
-}
-.card[bgcolor="5"] {
-  background: linear-gradient(218.46deg, #ff928e 9.79%, #febbba 74.73%);
-}
-.card[bgcolor="6"], .card[bgcolor="0"] {
-  background: linear-gradient(218.46deg, #d14981 9.79%, #dae3fe 79.73%);
-}
-@media (max-width: 768px) {
-  .card {
-    grid-template-rows: 1fr;
-    height: 18rem;
-  }
-  .card__image {
-    display: none;
-  }
-  .card__title {
-    align-self: flex-start;
-    transform: translateY(0);
-    margin-top: 2rem;
-    font-size: 1.3rem;
-  }
-  .card__desc {
-    opacity: 1;
-  }
-  .card__soon {
-    width: 85px;
-  }
+  font-size: 0.7rem;
+  color: #5F5F5F;
+  line-height: 1.3rem;
 }
 
-@media (min-width: 769px) {
-  .card--desc .card__image,
-.card--desc .card__title,
-.card--desc .card__desc {
-    transition: transform 700ms cubic-bezier(0.19, 1, 0.22, 1), opacity 700ms cubic-bezier(0.19, 1, 0.22, 1);
-  }
-  .card--desc .card__desc {
-    opacity: 0;
-    transform: translateY(1rem);
-  }
-  .card--desc:hover .card__image, .card--desc:focus-within .card__image {
-    opacity: 0;
-    transform: translateY(-30%);
-  }
-  .card--desc:hover .card__title, .card--desc:focus-within .card__title {
-    transform: translateY(-9rem);
-  }
-  .card--desc:hover .card__desc, .card--desc:focus-within .card__desc {
-    opacity: 1;
-    transform: translateY(0);
-    transition-delay: 87.5ms;
-  }
-  .card--desc:focus .card__title,
-.card--desc:focus .card__image,
-.card--desc:focus .card__desc {
-    transition-duration: 0s;
-  }
-}
 .carousel {
   height: 290px;
   background-color: #29314f;
@@ -513,8 +441,6 @@ button {
      -moz-user-select: none;
       -ms-user-select: none;
           user-select: none;
-  cursor: -webkit-grab;
-  cursor: grab;
   margin-bottom: 1.5rem;
   list-style: none;
   align-self: flex-end;
@@ -523,9 +449,8 @@ button {
 .carousel .videos::-webkit-scrollbar {
   display: none;
 }
-.carousel .videos.active {
-  cursor: -webkit-grabbing;
-  cursor: grabbing;
+.carousel .videos.hover {
+  cursor: pointer;
 }
 .carousel iframe {
   width: 360px;
@@ -544,17 +469,47 @@ button {
   cursor: pointer;
   width: 360px;
   height: 190px;
-  margin-right: 2rem;
+  margin-right: 0;
+  padding-right: 2rem;
+  border-radius: 8px;
 }
 
-/* play button triangle */
-.yt-lite > .lty-playbtn:before {
-  content: "";
-  border-top: 15px solid transparent;
-  border-left: 30px solid #fff;
-  border-bottom: 15px solid transparent;
-  width: 0;
-  height: 0;
+.yt-lite > .lty-playbtn {
+  display: none;
+}
+
+li.youtubelist-text {
+  margin-right: 2rem;
+  border-radius: 8px;
+  position: relative;
+}
+
+li.youtubelist-text > .youtubetext-overlay {
+  display: flex;
+  justify-content: center;
+  align-items: end;
+  z-index: 1;
+  padding-bottom: 20px;
+  position: absolute;
+  height: 100%;
+  text-align: center;
+  width: 100%;
+  background: linear-gradient(bottom, black, transparent);
+}
+li.youtubelist-text > .youtubetext-overlay p {
+  z-index: 1;
+  color: #fff;
+  font-size: 14px;
+  width: 80%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+li.youtubelist-text:hover .youtubetext-overlay {
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s, opacity 0.5s linear;
 }
 
 .footer {
@@ -751,14 +706,14 @@ button {
   gap: 1rem;
   padding-left: 0;
 }
-@media screen and (max-width: 1240px) {
-  .home__cards {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-@media screen and (max-width: 700px) {
+@media screen and (max-width: 900px) {
   .home__cards {
     grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media screen and (max-width: 550px) {
+  .home__cards {
+    grid-template-columns: repeat(1, 1fr);
   }
 }
 
@@ -1434,4 +1389,4 @@ button {
   place-content: center;
   height: 90vh;
   text-align: center;
-}
+}/*# sourceMappingURL=app.css.map */
