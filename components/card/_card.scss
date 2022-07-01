@@ -15,23 +15,23 @@
   position: relative;
   display: flex;
   align-items: flex-end;
-  box-sizing:content-box;
-  list-style:none;
+  box-sizing: content-box;
+  list-style: none;
 
   &__text_container {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    padding:16px;
+    padding: 16px;
   }
-  
+
   &__content {
-    border:1px solid black;
+    border: 1px solid black;
     height: 100%;
     width: 100%;
     position: relative;
     z-index: 1;
-    border-radius:10px;
+    border-radius: 10px;
   }
 
   &__icon {
@@ -51,7 +51,7 @@
     text-overflow: ellipsis;
     display: flex;
     flex-direction: column;
-    justify-content: start;
+    justify-content: flex-start;
     padding-bottom: 10px;
     line-height: 1.8rem;
   }
@@ -64,7 +64,7 @@
 
   &__desc {
     font-size: 0.7rem;
-    color: #5F5F5F;
+    color: #5f5f5f;
     line-height: 1.3rem;
   }
 }

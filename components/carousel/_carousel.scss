@@ -1,126 +1,124 @@
 .carousel {
-	height: 290px;
-	background-color: #29314f;
+  height: 290px;
+  background-color: #29314f;
 
-	&__container {
-		position: relative;
-		display: flex;
-		height: 100%;
-	}
+  &__container {
+    position: relative;
+    display: flex;
+    height: 100%;
+  }
 
-	&__heading {
-		color: #ffffff;
-		font-weight: 500;
-		font-size: 1rem;
-		line-height: 150%;
-		text-transform: uppercase;
-		position: absolute;
-		top: 1.5rem;
-	}
+  &__heading {
+    color: #ffffff;
+    font-weight: 500;
+    font-size: 1rem;
+    line-height: 150%;
+    text-transform: uppercase;
+    position: absolute;
+    top: 1.5rem;
+  }
 
-	&__controls {
-		position: absolute;
-		right: 0;
-		top: 1rem;
+  &__controls {
+    position: absolute;
+    right: 0;
+    top: 1rem;
 
-		button {
-			background: #0f1525;
-			border-radius: 2px;
-			border: none;
-			width: 43px;
-			height: 30px;
-		}
-		&--disabled {
-			background-color: rgba(255, 255, 255, 0.1);
-			pointer-events: none;
-		}
-	}
+    button {
+      background: #0f1525;
+      border-radius: 2px;
+      border: none;
+      width: 43px;
+      height: 30px;
+    }
+    &--disabled {
+      background-color: rgba(255, 255, 255, 0.1);
+      pointer-events: none;
+    }
+  }
 
-	&__back {
-		img {
-			transform: rotate(180deg);
-		}
-		margin-right: 0.5rem;
-	}
+  &__back {
+    img {
+      transform: rotate(180deg);
+    }
+    margin-right: 0.5rem;
+  }
 
-	.videos {
-		overflow-x: scroll;
-		display: flex;
-		scrollbar-width: none;
-		user-select: none;
-		margin-bottom: 1.5rem;
-		list-style: none;
-		align-self: flex-end;
-		padding-left: 0;
+  .videos {
+    overflow-x: scroll;
+    display: flex;
+    scrollbar-width: none;
+    user-select: none;
+    margin-bottom: 1.5rem;
+    list-style: none;
+    align-self: flex-end;
+    padding-left: 0;
 
-		&::-webkit-scrollbar {
-			display: none;
-		}
+    &::-webkit-scrollbar {
+      display: none;
+    }
 
-		&.hover {
-			cursor: pointer;
-		}
-
-	}
-	iframe {
-		width: 360px;
-		height: 190px;
-		margin-right: 2rem;
-		border: none;
-		
-	}
+    &.hover {
+      cursor: pointer;
+    }
+  }
+  iframe {
+    width: 360px;
+    height: 190px;
+    margin-right: 2rem;
+    border: none;
+  }
 }
 
 // iFrame plugin styling
 .yt-lite {
-	background-color: #000;
-	position: relative;
-	display: block;
-	contain: content;
-	background-position: center center;
-	background-size: cover;
-	cursor: pointer;
-	width: 360px;
-	height: 190px;
-	margin-right: 0;
-	padding-right: 2rem;
-	border-radius: 8px;
+  background-color: #000;
+  position: relative;
+  display: block;
+  contain: content;
+  background-position: center center;
+  background-size: cover;
+  cursor: pointer;
+  width: 360px;
+  height: 190px;
+  margin-right: 0;
+  padding-right: 2rem;
+  border-radius: 8px;
 }
 .yt-lite > .lty-playbtn {
-	display:none;
+  display: none;
 }
 
 li.youtubelist-text {
-	margin-right: 2rem;
-	border-radius: 8px;
-	position: relative;
-  }
+  margin-right: 2rem;
+  border-radius: 8px;
+  position: relative;
+}
 
 li.youtubelist-text > .youtubetext-overlay {
-	display: flex;
-	justify-content: center;
-	align-items: end;
-	z-index: 1;
-	padding-bottom: 20px;
-	position: absolute;
-	height: 100%;
-	text-align: center;
-	width: 100%;
-	background: linear-gradient(bottom, black, transparent);
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  z-index: 1;
+  padding-bottom: 20px;
+  position: absolute;
+  height: 100%;
+  text-align: center;
+  width: 100%;
+  background: linear-gradient(bottom, black, transparent);
 
-   p {
-	z-index: 1;
-	color: #fff;
-	font-size: 14px;
-	width: 80%;
-	white-space: nowrap;
-	overflow: hidden;
-	text-overflow: ellipsis;
+  p {
+    z-index: 1;
+    color: #fff;
+    font-size: 14px;
+    width: 80%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 }
 
-  li.youtubelist-text:hover .youtubetext-overlay {
-   visibility: hidden;
-   opacity: 0;
-   transition: visibility 0s, opacity 0.5s linear;
+li.youtubelist-text:hover .youtubetext-overlay {
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s, opacity 0.5s linear;
 }
