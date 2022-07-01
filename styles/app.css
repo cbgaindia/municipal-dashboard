@@ -98,7 +98,7 @@ button {
 }
 
 .footer {
-  background-color: #0f1525;
+  background-color: var(--primary);
 }
 
 .wrapper {
@@ -134,7 +134,7 @@ button {
 }
 
 .skip-to-content-link {
-  background: #4b4797;
+  background: var(--purple);
   color: white;
   height: 30px;
   left: 50%;
@@ -149,7 +149,7 @@ button {
 }
 
 .header {
-  background-color: #212142;
+  background-color: var(--primary);
   justify-content: center;
   color: #fff;
   position: -webkit-sticky;
@@ -207,7 +207,7 @@ button {
   width: 130px;
   height: 38px;
   box-sizing: border-box;
-  background-color: #484872;
+  background-color: var(--primary_lighter);
   border-radius: 4px;
   border: 2px solid transparent;
   font-weight: 400;
@@ -225,8 +225,8 @@ button {
   background-position: left 20px center;
 }
 .header__search:hover, .header__search:focus {
-  background-color: #273051;
-  border: 2px solid #4b4797;
+  background-color: var(--primary_light);
+  border: 2px solid var(--purple);
 }
 .header__search--hide {
   display: none;
@@ -249,7 +249,7 @@ button {
 
 .highlights {
   min-height: 80px;
-  background-color: #29314f;
+  background-color: var(--primary_light);
   color: #ffffff;
   padding: 1rem 0;
 }
@@ -296,7 +296,7 @@ button {
   max-width: 900px;
 }
 .highlights__controls button {
-  background: #0f1525;
+  background: var(--primary);
   border-radius: 2px;
   border: none;
   width: 43px;
@@ -371,7 +371,7 @@ button {
   height: -moz-max-content;
   height: max-content;
   align-self: flex-start;
-  color: #0f1525;
+  color: var(--primary);
   font-weight: 800;
   font-size: 1.2rem;
   overflow: hidden;
@@ -395,7 +395,7 @@ button {
 
 .carousel {
   height: 290px;
-  background-color: #29314f;
+  background-color: var(--primary_light);
 }
 .carousel__container {
   position: relative;
@@ -417,7 +417,7 @@ button {
   top: 1rem;
 }
 .carousel__controls button {
-  background: #0f1525;
+  background: var(--primary);
   border-radius: 2px;
   border: none;
   width: 43px;
@@ -513,7 +513,7 @@ li.youtubelist-text:hover .youtubetext-overlay {
 }
 
 .footer {
-  background-color: #0f1525;
+  background-color: var(--primary);
   color: #ffffff;
 }
 .footer a {
@@ -567,7 +567,7 @@ li.youtubelist-text:hover .youtubetext-overlay {
   width: 13rem;
 }
 .footer .attribute {
-  background-color: #273051;
+  background-color: var(--primary_light);
 }
 .footer .attribute__container {
   display: flex;
@@ -648,7 +648,7 @@ li.youtubelist-text:hover .youtubetext-overlay {
   width: 130px;
   height: 38px;
   box-sizing: border-box;
-  background-color: #484872;
+  background-color: var(--primary_lighter);
   border-radius: 4px;
   border: 2px solid transparent;
   font-weight: 400;
@@ -672,8 +672,8 @@ li.youtubelist-text:hover .youtubetext-overlay {
   border-radius: 0;
 }
 .home__mobile-search:hover, .home__mobile-search:focus {
-  background-color: #273051;
-  border: 2px solid #4b4797;
+  background-color: var(--primary_light);
+  border: 2px solid var(--purple);
 }
 .home__mobile-search a {
   font-size: 1.5rem;
@@ -748,7 +748,7 @@ li.youtubelist-text:hover .youtubetext-overlay {
   padding-inline: 24px;
 }
 .navigation__container a > span p {
-  background-color: #f5899d;
+  background-color: var(--secondary);
   border: 3px solid #fff;
   border-radius: 20px;
   font-size: 0.7rem;
@@ -775,7 +775,7 @@ li.youtubelist-text:hover .youtubetext-overlay {
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #f5899d;
+  color: var(--secondary);
   font-size: 14px;
   font-weight: 700;
 }
@@ -894,7 +894,7 @@ li.youtubelist-text:hover .youtubetext-overlay {
 }
 .menu .content--active {
   font-weight: bold;
-  color: #4b4797;
+  color: var(--purple);
 }
 .menu .content--active li {
   font-weight: normal;
@@ -949,7 +949,7 @@ li.youtubelist-text:hover .youtubetext-overlay {
   padding: 0.5rem 0;
 }
 .menu .sub-heading__link--active {
-  color: #4b4797 !important;
+  color: var(--purple) !important;
   font-weight: 500 !important;
 }
 
@@ -989,7 +989,7 @@ li.youtubelist-text:hover .youtubetext-overlay {
 }
 .sidebar .content--active {
   font-weight: bold;
-  color: #4b4797;
+  color: var(--purple);
 }
 .sidebar .content--active li {
   font-weight: normal;
@@ -1016,7 +1016,7 @@ li.youtubelist-text:hover .youtubetext-overlay {
   text-align: start;
 }
 .sidebar .sub-heading__link--active {
-  color: #4b4797 !important;
+  color: var(--purple) !important;
   font-weight: 500 !important;
 }
 .sidebar .sub-heading:focus-within {
@@ -1029,7 +1029,7 @@ li.youtubelist-text:hover .youtubetext-overlay {
 }
 
 .suggestions {
-  background-color: #c06c84;
+  background-color: var(--secondary_light);
   padding: 48px 0;
 }
 .suggestions__head {
@@ -1104,7 +1104,7 @@ li.youtubelist-text:hover .youtubetext-overlay {
   border-radius: 100%;
 }
 .chapter__heading-image > div p {
-  color: #f5899d;
+  color: var(--secondary);
   font-size: 14px;
   font-weight: 700;
 }
@@ -1229,7 +1229,7 @@ li.youtubelist-text:hover .youtubetext-overlay {
 .chapter .section__bar {
   min-height: 40px;
   width: 4px;
-  background-color: #f5899d;
+  background-color: var(--secondary);
   border-radius: 4px;
   display: inline-block;
   vertical-align: middle;
@@ -1246,7 +1246,7 @@ li.youtubelist-text:hover .youtubetext-overlay {
   font-weight: 600;
 }
 .chapter .tooltip-wrapper span {
-  color: #4b4797 !important;
+  color: var(--purple) !important;
 }
 .chapter .tooltip-wrapper span[role=tooltip] {
   font-size: 0.8em;

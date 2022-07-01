@@ -1,7 +1,7 @@
 @use '../../styles/tools' as *;
 
 .header {
-  background-color: #212142;
+  background-color: var(--primary);
   justify-content: center;
   color: #fff;
   position: sticky;

@@ -34,7 +34,7 @@
         padding-inline: 24px;
 
         p {
-          background-color: #f5899d;
+          background-color: var(--secondary);
           border: 3px solid #fff;
           border-radius: 20px;
           font-size: 0.7rem;
@@ -65,7 +65,7 @@
     align-items: center;
     justify-content: center;
 
-    color: #f5899d;
+    color: var(--secondary);
     font-size: 14px;
     font-weight: 700;
   }

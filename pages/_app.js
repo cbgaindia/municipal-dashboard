@@ -13,9 +13,21 @@ import * as ga from '../lib/ga';
 
 export const GlobalContext = createContext({});
 function MyApp({ Component, pageProps, footer }) {
+  const { global } = pageProps;
+
   if (typeof window !== 'undefined') {
     smoothscroll.polyfill();
   }
+
+  React.useEffect(() => {
+    // set css variables for color scheme
+    const r = document.querySelector(':root');
+    const colors = global.data[0].design_system;
+    Object.keys(colors).forEach((item) =>
+      r.style.setProperty(`--${item}`, colors[item])
+    );
+  }, []);
+
   React.useEffect(() => {
     const handleRouteChange = (url) => {
       if (process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS) ga.pageview(url);
@@ -59,7 +71,7 @@ function MyApp({ Component, pageProps, footer }) {
       Router.events.off('routeChangeComplete', handleRouteChange);
     };
   });
-  const { global } = pageProps;
+
   return (
     <>
       <Head>

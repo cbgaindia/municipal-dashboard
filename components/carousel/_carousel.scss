@@ -1,6 +1,6 @@
 .carousel {
   height: 290px;
-  background-color: #29314f;
+  background-color: var(--primary_light);
 
   &__container {
     position: relative;
@@ -24,7 +24,7 @@
     top: 1rem;
 
     button {
-      background: #0f1525;
+      background: var(--primary);
       border-radius: 2px;
       border: none;
       width: 43px;

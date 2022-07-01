@@ -1,7 +1,7 @@
 @use '../../styles/tools' as *;
 
 .footer {
-  background-color: #0f1525;
+  background-color: var(--primary);
   color: #ffffff;
 
   a {
@@ -65,7 +65,7 @@
   }
 
   .attribute {
-    background-color: #273051;
+    background-color: var(--primary_light);
 
     &__container {
       display: flex;

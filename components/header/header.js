@@ -15,7 +15,7 @@ const Header = ({ color }) => {
     }
   }, [router]);
   return (
-    <header className="header" style={{ backgroundColor: color }}>
+    <header className="header">
       <div className="header__container wrapper">
         <section className="branding">
           <Link href="/">
