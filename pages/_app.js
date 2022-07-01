@@ -12,7 +12,7 @@ import smoothscroll from 'smoothscroll-polyfill';
 import * as ga from '../lib/ga';
 
 export const GlobalContext = createContext({});
-function MyApp({ Component, pageProps }) {
+function MyApp({ Component, pageProps, footer }) {
   if (typeof window !== 'undefined') {
     smoothscroll.polyfill();
   }
@@ -105,7 +105,7 @@ function MyApp({ Component, pageProps }) {
         options={{ easing: 'ease', showSpinner: false, speed: 300 }}
       />
       <GlobalContext.Provider value={global.data[0]}>
-        <Layout>
+        <Layout footer={footer}>
           <Component {...pageProps} />
         </Layout>
       </GlobalContext.Provider>
@@ -116,7 +116,8 @@ function MyApp({ Component, pageProps }) {
 MyApp.getInitialProps = async (ctx) => {
   const appProps = await App.getInitialProps(ctx);
   const global = await fetchAPI('/books?filters[slug]=municipal');
-  return { ...appProps, pageProps: { global } };
+  const footer = await fetchAPI('/footer');
+  return { ...appProps, footer, pageProps: { global } };
 };
 
 export default MyApp;
