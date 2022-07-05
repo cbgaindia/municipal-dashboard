@@ -5,17 +5,6 @@ export default function Card({ chapter }) {
     <li className="card">
       <Link key={chapter.index} href={`/${chapter.slug}`}>
         <a className="card__content">
-          {chapter.totalArticles == 0 && (
-            <>
-              <img
-                src="/assets/icons/coming_soon.png"
-                alt=""
-                className="card__soon"
-              />
-              <span className="screen-reader-text">Coming Soon:</span>
-            </>
-          )}
-
           <picture className="card__image">
             <source
               srcSet={`${process.env.NEXT_PUBLIC_STRAPI_API_URL}${chapter.icon.url}`}

@@ -338,7 +338,6 @@ button {
   margin-bottom: 1.5rem;
   border-radius: 10px;
   color: #fff;
-  border: 2px solid white;
   position: relative;
   display: flex;
   align-items: flex-end;
@@ -352,12 +351,12 @@ button {
   padding: 16px;
 }
 .card__content {
-  border: 1px solid black;
   height: 100%;
   width: 100%;
   position: relative;
   z-index: 1;
   border-radius: 10px;
+  background: #fff;
 }
 .card__icon {
   height: 193px;
