@@ -38,7 +38,7 @@
     }
     &--active {
       font-weight: bold;
-      color: #4b4797;
+      color: var(--purple);
       li {
         font-weight: normal;
         color: black;
@@ -67,7 +67,7 @@
       }
 
       &--active {
-        color: #4b4797 !important;
+        color: var(--purple) !important;
         font-weight: 500 !important;
       }
     }

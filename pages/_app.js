@@ -12,10 +12,22 @@ import smoothscroll from 'smoothscroll-polyfill';
 import * as ga from '../lib/ga';
 
 export const GlobalContext = createContext({});
-function MyApp({ Component, pageProps }) {
+function MyApp({ Component, pageProps, footer }) {
+  const { global } = pageProps;
+
   if (typeof window !== 'undefined') {
     smoothscroll.polyfill();
   }
+
+  React.useEffect(() => {
+    // set css variables for color scheme
+    const r = document.querySelector(':root');
+    const colors = global.data[0].design_system;
+    Object.keys(colors).forEach((item) =>
+      r.style.setProperty(`--${item}`, colors[item])
+    );
+  }, []);
+
   React.useEffect(() => {
     const handleRouteChange = (url) => {
       if (process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS) ga.pageview(url);
@@ -59,7 +71,7 @@ function MyApp({ Component, pageProps }) {
       Router.events.off('routeChangeComplete', handleRouteChange);
     };
   });
-  const { global } = pageProps;
+
   return (
     <>
       <Head>
@@ -105,7 +117,7 @@ function MyApp({ Component, pageProps }) {
         options={{ easing: 'ease', showSpinner: false, speed: 300 }}
       />
       <GlobalContext.Provider value={global.data[0]}>
-        <Layout>
+        <Layout footer={footer}>
           <Component {...pageProps} />
         </Layout>
       </GlobalContext.Provider>
@@ -116,7 +128,8 @@ function MyApp({ Component, pageProps }) {
 MyApp.getInitialProps = async (ctx) => {
   const appProps = await App.getInitialProps(ctx);
   const global = await fetchAPI('/books?filters[slug]=municipal');
-  return { ...appProps, pageProps: { global } };
+  const footer = await fetchAPI('/footer');
+  return { ...appProps, footer, pageProps: { global } };
 };
 
 export default MyApp;

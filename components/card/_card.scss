@@ -14,17 +14,16 @@
   position: relative;
   display: flex;
   align-items: flex-end;
-  box-sizing:content-box;
-  list-style:none;
+  box-sizing: content-box;
+  list-style: none;
 
   &__text_container {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    padding:16px;
-    
+    padding: 16px;
   }
-  
+
   &__content {
     height: 100%;
     width: 100%;
@@ -44,14 +43,14 @@
   &__title {
     height: max-content;
     align-self: flex-start;
-    color: #0f1525;
+    color: var(--primary);
     font-weight: 800;
     font-size: 1.2rem;
     overflow: hidden;
     text-overflow: ellipsis;
     display: flex;
     flex-direction: column;
-    justify-content: start;
+    justify-content: flex-start;
     padding-bottom: 10px;
     line-height: 1.8rem;
   }
@@ -64,7 +63,7 @@
 
   &__desc {
     font-size: 0.7rem;
-    color: #5F5F5F;
+    color: #5f5f5f;
     line-height: 1.3rem;
   }
 }

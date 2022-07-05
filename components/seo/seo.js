@@ -7,7 +7,7 @@ const Seo = ({ seo }) => {
     metaTitle: `${seo.metaTitle}`,
     shareImage: seo.icon
       ? getStrapiMedia(seo.icon.url)
-      : getStrapiMedia(seo.shareImage.url),
+      : getStrapiMedia(seo.shareImage?.url || ''),
   };
 
   return (

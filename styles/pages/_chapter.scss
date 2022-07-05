@@ -45,7 +45,7 @@
       border-radius: 100%;
 
       p {
-        color: #f5899d;
+        color: var(--secondary);
         font-size: 14px;
         font-weight: 700;
       }
@@ -199,7 +199,7 @@
     &__bar {
       min-height: 40px;
       width: 4px;
-      background-color: #f5899d;
+      background-color: var(--secondary);
       border-radius: 4px;
       display: inline-block;
       vertical-align: middle;
@@ -217,7 +217,7 @@
     font-weight: 600;
 
     span {
-      color: #4b4797 !important;
+      color: var(--purple) !important;
     }
 
     span[role='tooltip'] {
