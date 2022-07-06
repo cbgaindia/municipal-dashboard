@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import Link from 'next/link';
 import { romanizeNumber } from 'utils/helpers';
 
@@ -17,7 +18,9 @@ const Navigation = ({ back, forward, isHindi = false }) => (
                   <span className="navigation__id">
                     {romanizeNumber(back.chapter_no)}
                   </span>
-                  <img
+                  <Image
+                    width={200}
+                    height={200}
                     src={`${process.env.NEXT_PUBLIC_STRAPI_API_URL}${back.icon.url}`}
                     alt=""
                   />
@@ -43,7 +46,9 @@ const Navigation = ({ back, forward, isHindi = false }) => (
                   <span className="navigation__id">
                     {romanizeNumber(forward.chapter_no)}
                   </span>
-                  <img
+                  <Image
+                    width={200}
+                    height={200}
                     src={`${process.env.NEXT_PUBLIC_STRAPI_API_URL}${forward.icon.url}`}
                     alt=""
                   />
