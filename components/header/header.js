@@ -6,9 +6,9 @@ import React from 'react';
 
 const Header = ({ color }) => {
   const global = React.useContext(GlobalContext);
-
+  const { asPath } = router;
   React.useEffect(() => {
-    if (router.asPath == '/search') {
+    if (asPath == '/search') {
       document
         .querySelector('.header__search')
         .classList.add('header__search--hide');
