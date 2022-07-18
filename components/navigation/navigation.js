@@ -9,7 +9,7 @@ const Navigation = ({ back, forward, isHindi = false }) => (
         {back != undefined && (
           <div
             className={`navigation__back ${
-              forward == undefined ? 'navigation__back--only' : ''
+              forward == undefined ? 'navigation__back--only' : null
             }`}
           >
             <Link href={isHindi ? `/hn/${back.slug}` : `/${back.slug}`}>
@@ -37,7 +37,7 @@ const Navigation = ({ back, forward, isHindi = false }) => (
         {forward != undefined && (
           <div
             className={`navigation__next ${
-              back == undefined ? 'navigation__next--only' : ''
+              back == undefined ? 'navigation__next--only' : null
             }`}
           >
             <Link href={isHindi ? `/hn/${forward.slug}` : `/${forward.slug}`}>
