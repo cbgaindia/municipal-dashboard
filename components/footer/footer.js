@@ -4,23 +4,10 @@ import Image from 'next/image';
 import * as data1 from './footer_data';
 
 const Footer = ({ data }) => {
-  const Attr_Social = [
-    {
-      alt: 'CBGA India github repo',
-      src: '/assets/icons/github-icon.svg',
-      value: data.social_links.github,
-    },
-    {
-      alt: 'Open Budgets India twitter page',
-      src: '/assets/icons/twitter-icon.svg',
-      value: data.social_links.twitter,
-    },
-    {
-      alt: 'Open Budgets India facebook page',
-      src: '/assets/icons/facebook-icon.svg',
-      value: data.social_links.facebook,
-    },
-  ];
+  const links = [data.social_links.github, data.social_links.twitter,data.social_links.facebook];
+  const Attr_Social = data1.Attr_Social.links.map(
+    (ele,index)=>({...ele,value:links[index]})
+   );  
 
   return (
     <footer className="footer">
