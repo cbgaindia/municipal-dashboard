@@ -4,7 +4,7 @@ import router from 'next/router';
 import { GlobalContext } from 'pages/_app';
 import React from 'react';
 
-const Header = ({ color }) => {
+const Header = () => {
   const global = React.useContext(GlobalContext);
 
   React.useEffect(() => {

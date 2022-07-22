@@ -4,10 +4,15 @@ import Image from 'next/image';
 import * as data1 from './footer_data';
 
 const Footer = ({ data }) => {
-  const links = [data.social_links.github, data.social_links.twitter,data.social_links.facebook];
-  const Attr_Social = data1.Attr_Social.links.map(
-    (ele,index)=>({...ele,value:links[index]})
-   );  
+  const links = [
+    data.social_links.github,
+    data.social_links.twitter,
+    data.social_links.facebook,
+  ];
+  const Attr_Social = data1.Attr_Social.links.map((ele, index) => ({
+    ...ele,
+    value: links[index],
+  }));
 
   return (
     <footer className="footer">
