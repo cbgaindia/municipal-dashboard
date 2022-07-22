@@ -1,19 +1,22 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import router from 'next/router';
+import { useRouter } from 'next/router';
 import { GlobalContext } from 'pages/_app';
 import React from 'react';
 
 const Header = ({ color }) => {
   const global = React.useContext(GlobalContext);
+  const router = useRouter();
+  const { asPath } = router;
 
   React.useEffect(() => {
-    if (router.asPath == '/search') {
+    if (asPath == '/search') {
       document
         .querySelector('.header__search')
         .classList.add('header__search--hide');
     }
-  }, [router]);
+  }, [asPath]);
+  
   return (
     <header className="header">
       <div className="header__container wrapper">
