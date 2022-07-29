@@ -705,6 +705,11 @@ li.youtubelist-text:hover .youtubetext-overlay {
   gap: 1rem;
   padding-left: 0;
 }
+@media screen and (max-width: 1220px) {
+  .home__cards {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
 @media screen and (max-width: 900px) {
   .home__cards {
     grid-template-columns: repeat(2, 1fr);
@@ -1388,4 +1393,4 @@ li.youtubelist-text:hover .youtubetext-overlay {
   place-content: center;
   height: 90vh;
   text-align: center;
-}
+}/*# sourceMappingURL=app.css.map */
